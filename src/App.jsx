@@ -7,6 +7,7 @@ import { PiCloudRainThin } from "react-icons/pi";
 import { PiThermometerLight } from "react-icons/pi";
 import { BiSearch } from "react-icons/bi";
 function App() {
+  const [color, setColor] = useState("black");
   const [weatherInfo, setWeatherInfo] = useState({});
   const [location, setLocation] = useState({ lat: null, lon: null });
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,8 +70,20 @@ function App() {
     return "/default.jpg";
   };
 
+  // if (
+  //   weatherInfo?.current?.condition?.text?.includes("cloudy") ||
+  //   weatherInfo?.current?.condition?.text?.includes("overcast") ||
+  //   weatherInfo?.current?.condition?.text?.includes("mist")
+  // ) {
+  //   return setColor("white");
+  // } else {
+  //   setColor("black");
+  // }
+
+  console.log(weatherInfo);
+
   return (
-    <div className="h-100 flex col">
+    <div className="main-container flex col">
       <div className="search-bar flex">
         <input
           type="text"
@@ -96,7 +109,7 @@ function App() {
               <WiDayWindy />
             </div>
             <h1>
-              {weatherInfo?.current?.wind_kph} <span>KMPH</span>
+              {weatherInfo?.current?.wind_kph} <span>km/h</span>
             </h1>
           </div>
           <div className="card flex col">
